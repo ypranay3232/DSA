@@ -87,9 +87,6 @@ int main(){
     for(int i = 100; i>=10; i = i/2){
         cout<<i<<endl;
     }
-    for(int i = 10; i<=100; i = i*2){
-        cout<<i<<endl;
-    }
 
     
 
