@@ -1,6 +1,6 @@
-# 🚀 Learning DSA with Love Babbar's Playlist
+# 🚀 Learning DSA
 
-Hey there! I'm currently learning **Data Structures and Algorithms (DSA)** using Love Babbar's course. This repo is my personal notebook, practice area, and guide for beginners who want to follow a structured path.
+Hey there! I'm currently learning **Data Structures and Algorithms (DSA)**. This repo is my personal notebook, practice area, and guide for beginners who want to follow a structured path.
 
 
 
@@ -39,15 +39,6 @@ You can use this repo to:
 - Follow along with my learning journey
 - Find beginner-friendly code examples
 - Use the checklist to track your own DSA progress
-
----
-
-## 🔗 Resources
-
-- 📺 [Love Babbar DSA Sheet](https://drive.google.com/file/d/1nx6CslIYxW8V6AczkN0cCF1wgIDQzL7e/view)
-- 🧾 [GeeksforGeeks](https://www.geeksforgeeks.org/)
-- 🐍 [LeetCode](https://leetcode.com/)
-- 🧠 [Striver DSA Sheet](https://takeuforward.org/interviews/strivers-sde-sheet-top-coding-interview-problems/)
 
 ---
 
