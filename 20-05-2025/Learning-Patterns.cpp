@@ -94,4 +94,37 @@ int main()
             cout << endl;
         }
     }
+
+
+    // Lets see how to solve this : 
+    /*      *********************
+            *                   *
+            *                   *
+            *                   *
+            *                   *
+            *********************
+    
+    */ 
+    int RowCount, ColCount;
+    cout<<"Enter the no of rows you want : ";
+    cin>>RowCount;
+    cout<<"Enter the no of cols you want : ";
+    cin>>ColCount;
+    // Takes input from user
+
+    for(int row = 0; row<RowCount; row+=1){ //creates rows and checks if rows < input if yes then increment 
+        if(row == 0 || row == RowCount-1){  //if the row is first and (n-1) last
+            for(int col=0; col<ColCount;col++){ //then print 10 stars as columns
+                cout<<"*";
+            }
+        }
+        else{ //else if the rows are not first and last(n-1)
+            cout<<"*";//first print a star
+            for(int space = 0; space<ColCount-2; space+=1){//then print n-2 spaces becuase we print 2 stars fist and last
+                cout<<" ";
+            }
+            cout<<"*";
+        }
+        cout<<endl;//now end lien and start in new line for last row
+    }
 }
