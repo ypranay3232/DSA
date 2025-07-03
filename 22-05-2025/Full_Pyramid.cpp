@@ -12,9 +12,4 @@ int main(){
         cout<<endl;
     }
 
-
-
-
-
-
 }
