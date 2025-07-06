@@ -1,18 +1,18 @@
-# 🚀 Learning DSA
+Learning DSA
 
-Hey there! I'm currently learning **Data Structures and Algorithms (DSA)**. This repo is my personal notebook, practice area, and guide for beginners who want to follow a structured path.
-
-
-
-## 📚 What This Repo Contains
-- ✅ Notes from each topic
-- ✅ Practice problems and solutions
-- ✅ Useful links & references
-- ✅ My personal progress tracker
+Hello folks! I'm currently learning **Data Structures and Algorithms (DSA)**. This repo is my personal notebook, practice area, and guide for beginners who want to follow a structured path.
 
 
 
-## 🧠 Why I'm Doing This
+##  What This Repo Contains
+-  Notes from each topic
+-  Practice problems and solutions
+-  Useful links & references
+-  My personal progress tracker
+
+
+
+## Why I'm Doing This
 
 - To master problem-solving for interviews
 - To build a strong foundation in CS
@@ -20,7 +20,7 @@ Hey there! I'm currently learning **Data Structures and Algorithms (DSA)**. This
 
 
 
-## 📌 DSA Topics Checklist
+## DSA Topics Checklist
 
 - [ ] Arrays
 - [ ] Strings
@@ -31,11 +31,12 @@ Hey there! I'm currently learning **Data Structures and Algorithms (DSA)**. This
 - [ ] Dynamic Programming
 - [ ] Bit Manipulation and many more.
 
----
 
-## 🧪 How to Use This Repo
+
+## How to Use This Repo
 
 You can use this repo to:
+
 - Follow along with my learning journey
 - Find beginner-friendly code examples
 - Use the checklist to track your own DSA progress
