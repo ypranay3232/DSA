@@ -1,5 +1,3 @@
-Learning DSA
-
 Hello folks! I'm currently learning **Data Structures and Algorithms (DSA)**. This repo is my personal notebook, practice area, and guide for beginners who want to follow a structured path.
 
 
