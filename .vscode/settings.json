@@ -1,0 +1,27 @@
+{
+    "git.ignoreLimitWarning": true,
+    "files.associations": {
+        "iostream": "cpp",
+        "string": "cpp",
+        "limits": "cpp"
+    },
+    "cSpell.words": [
+        "bandh",
+        "barbaadh",
+        "barbadh",
+        "Gpay",
+        "haal",
+        "hamaara",
+        "kitte",
+        "likhayi",
+        "numberoflayers",
+        "oventime",
+        "Padai",
+        "paisaa",
+        "Phonepe",
+        "preparationtime",
+        "saala",
+        "wahi",
+        "zhang"
+    ]
+}
