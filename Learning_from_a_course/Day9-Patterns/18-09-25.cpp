@@ -36,4 +36,26 @@ int main()
         // And we print with endline for each completion of a row and a column ********
         cout<<endl;
     }
+
+    // Question 3 : Hollow inverted Half pyramid ! 
+    int m;
+    cout<<"Enter the Value of M : "<<endl;
+    cin>>m;
+
+    for(int row1=0;row1<m;++row1){
+        for(int col1=0;col1<=m;++col1){
+            // Everything is same till now the condition is (print star only if row ==0 and col ==0 ) but about the middle line its 
+            // we print the inverted triangle as : as the row increases the cols decreases ! 
+            if(row1==0 || col1==0 || col1== m-row1-1){
+                cout<<"*";
+            }else{
+                cout<<" ";
+            }
+        }
+        // adding endl because we need to start at new line after each column.(*******\n)
+        cout<<endl;
+    }
+
+
+    
 }
