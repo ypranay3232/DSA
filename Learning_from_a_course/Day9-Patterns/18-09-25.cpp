@@ -55,7 +55,4 @@ int main()
         // adding endl because we need to start at new line after each column.(*******\n)
         cout<<endl;
     }
-
-
-    
 }
