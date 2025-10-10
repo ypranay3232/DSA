@@ -41,13 +41,12 @@ int main()
 
     // Question 3 : Hollow inverted Half pyramid ! 
     int m;
-    cout<<"Enter the Value of M : "<<endl;
+    cout<<"Enter the Value of M : "<<endl;//5
     cin>>m;
 
     for(int row1=0;row1<m;++row1){
         for(int col1=0;col1<=m;++col1){
-            // Everything is same till now the condition is (print star only if row ==0 and col ==0 ) but about the middle line its 
-            // we print the inverted triangle as : as the row increases the cols decreases ! 
+            // Everything is same till now the condition is (print star only if row ==0 and col ==0 ) but about the middle line we use this formula : cols= input - rows -1. this helps to get that decrease of stars 
             if(row1==0 || col1==0 || col1== m-row1-1){
                 cout<<"*";
             }else{
