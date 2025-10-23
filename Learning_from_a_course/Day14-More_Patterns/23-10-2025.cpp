@@ -34,7 +34,7 @@ int main()
             cout << "* ";
         }
         cout << endl;
-    }
+    }//End of the full pyramid 
     for (int row = 0; row < n; row = row + 1)
     {
         // now we start printing the inverted full pyramid
@@ -51,5 +51,5 @@ int main()
             cout << "* ";
         }
         cout << endl;
-    }
+    }//end of inverted pyramid
 }
