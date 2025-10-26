@@ -69,9 +69,47 @@ int main(){
     for(int row=0;row<n;row=row+1){
         // first lets print the first half
 
-        /* so lets see how to get the pyramid as */
+        /* so lets see how to get the pyramid start with 1 star and increment all the way up 
+        
+        rows  stars
+        0       1
+        1       2
+        2       3
+        3       4
+        4       5
 
-        for(int cols=0;cols<2*row+1;cols=cols+1){
+
+        */
+
+        for(int cols=0;cols<row+1;cols=cols+1){
+            cout<<"*";
+        }
+        // Now lets print the spaces ! but we need the space pyramid as inverted so we need 8 spacs on 1st row
+        
+        /*
+        rows spaces
+        0       8
+        1       6
+        2       4
+        3       2
+        1       0
+        
+        so we need 2 spaces decrease in each iteration so we can use : 2* (n-row-1) 
+
+        lets test : 
+        2 * (5-0-1) = 2*4=8
+        2 * (5-1-1) = 2*3=6
+        2 * (5-2-1) = 2*2=4
+        2 * (5-3-1) = 2*1=2
+        2 * (5-4-1) = 2*0-0
+        */
+        
+        for(int cols=0;cols<2*(n-row-1);cols=cols+1){
+            cout<<" ";
+        }
+
+        // Remaining half pyramid 
+                for(int cols=0;cols<row+1;cols=cols+1){
             cout<<"*";
         }
         cout<<endl;
