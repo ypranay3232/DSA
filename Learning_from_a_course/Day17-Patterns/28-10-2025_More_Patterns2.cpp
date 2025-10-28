@@ -48,7 +48,15 @@ int main()
         }
 
         // Think if Letf half pyramid condition is (cols<=row+1) then right half pyramid question would be ? ofc (cols>=1) and cols--
-        // Because if we initiate cols = 1 we get two 1's at starting of pattern so we assign it to row ! 
+        // Cols = row because ! 
+        /* 
+            The first left half pyramid print from 1 to row(n)
+            The second right half Pyrmaid prints from the (row)
+            The second right half Pyrmaid prints from the (row which ever we left after printing the first pattern) to 1
+
+            so it is as : 1 to row and row to 1 for both patterns
+
+        */
         for (int cols = row; cols >= 1; cols--)
         // ex: At row 3 (because its decrementing values : which are greater than 1 so row 3 ==4 so 3,2,1)
         {
