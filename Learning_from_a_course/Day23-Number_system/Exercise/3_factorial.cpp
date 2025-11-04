@@ -12,12 +12,12 @@ int factorial(int n){
 
 int main(){
 
-    int fact;
+    int n;
     cout<<"Enter the factorial value : "<<endl;
-    cin>>fact;
+    cin>>n;
 
-    int result = factorial(fact);
-    cout<<"The given number "<<fact<<" factorial value is : "<<result<<endl;
+    int result = factorial(n);
+    cout<<"The given number "<<n<<" factorial value is : "<<result<<endl;
 
     return 0;
 
