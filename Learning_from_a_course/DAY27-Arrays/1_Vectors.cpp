@@ -55,5 +55,20 @@ int main()
     }
     cout << endl;
 
+
+    // Now lets try to declare an vetor array values explicitly 
+    vector<int> arr1(10);
+    // now lets check its values !
+    cout<<"size of array is : "<<arr1.size()<<endl;
+    cout<<"Capacity of array is : "<<arr1.capacity()<<endl;
+
+    // Both are 10. becasue once we explicitly mention size of a vector that size is fixed.
+    
+    // lets try to print the 10 size values 
+    for(int i =0;i<arr1.size();i++){
+        cout<<arr1[i]<<" ";
+
+    }
+    
     return 0;
 }
