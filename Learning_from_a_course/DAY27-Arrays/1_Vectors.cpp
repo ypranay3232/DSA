@@ -56,7 +56,7 @@ int main()
     cout << endl;
 
 
-    // Now lets try to declare an vetor array values explicitly 
+    // Now lets try to declare an vetor array values explicitly
     vector<int> arr1(10);
     // now lets check its values !
     cout<<"size of array is : "<<arr1.size()<<endl;
