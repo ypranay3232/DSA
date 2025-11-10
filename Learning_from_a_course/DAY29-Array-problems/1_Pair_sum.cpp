@@ -45,7 +45,7 @@ int main()
     cout<<"=======================================";
 
     // Now let's see the optimized solution : 
-    // We don't want to check every possible element it takes a lot of time, so we want to know instantly whether a number exists in second array can form target sum with first array. so we use hashing because lookinup into a hash table is O(1)--> instnt
+    // We don't want to check every possible element it takes a lot of time, so we want to know instantly whether a number exists in second array can form target sum with first array. so we use hashing because lookinup into a hash table is O(1)--> 
 
     // first we load the array2 into the set 's' --> set ? because searching is very fast
 
@@ -53,7 +53,7 @@ int main()
     // now take each element from array1 and calculate "what number we need from array2 to reach sum"
     for(int a : array1){
         int b = sum -a;
-        // ex: a = 1, so int b = sum -a checks as : b = 9-1 = 8. we need 8 at array2. 
+        // ex: a = 1, so int b = sum -a checks as : b = 9-1 = 8. we need 8 at array2. and move to next if 9-3 = 6 is present in arr2 so print that 6 and 3 as output.
         // now we check that the 'b value (8)' is present in hashset or not ? 
         if(s.find(b) != s.end()){
             // if present 

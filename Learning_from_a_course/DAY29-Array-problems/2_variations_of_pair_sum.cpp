@@ -32,7 +32,7 @@ int main(){
     for(int num : array){
         // the B value checks Target - current ele from array so what element we might need to get the Target
         int b = Target - num;
-        // now chek condition if(set.find(b) != s.end()) is not in array then we print that number and b
+        // now chek condition   
         if(s.find(b) != s.end()){
             cout<<"("<<num<<","<<b<<")"<<endl;
         }
