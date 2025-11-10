@@ -13,11 +13,11 @@ int main()
     int target = 100;
 
     for(int i =0;i<arr.size();i++){
-        for(int j =0;j<arr.size();j++){
-            for(int k=0;k<arr.size();k++){
+        for(int j =i+1;j<arr.size();j++){
+            for(int k=j+1;k<arr.size();k++){
                 // now check the condition if arri,j,k == target then print the pairs 
                 if(arr[i] + arr[j] + arr[k] == target){
-                    cout<<"("<<arr[i]<<","<<arr[j]<<","<<arr[k]<<")"<<endl;
+                    cout<<"("<<arr[i]<<","<<arr[j]<<","<<arr[k]<<")"<<endl;//prints every possible pair But if we want only in order not to repeat any then we can do it as : j = i+1, k = j+1 so we dont repeat the array and we skip to i+1 th position. But if you want all the possible pairs you can use i=0,j=0,k=0
                 }
             }
         }
