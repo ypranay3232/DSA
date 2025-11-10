@@ -35,7 +35,7 @@ int main()
     now we use two pointers : left = i + 1. because left moves to right so (+1)
     Right = n - 1. because Right moves towards left so (-1)
 
-    now we compute sum ! arr[i] + arr[left] + arr[right]
+    now we compute sum. arr[i] + arr[left] + arr[right]
     and check if : sum == target --> valid triple so print it
     if sum < target -->  Then move the left ++ so we get higher values and we get target
     if sum > target -->  Then move the right -- so we decrement the values and get Target.
