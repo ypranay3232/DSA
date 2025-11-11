@@ -28,7 +28,7 @@ int main()
 
     int start = 0;
     int end = n-1; // so we can start with ending
-    int mid = 0;
+    int mid = 0;//The mid vatiable is like a traversing pointer which traverse and check each number with start and end
 
     // now check if mid <= end which is alway true because 0< n-1 == True 
     while(mid<=end){
