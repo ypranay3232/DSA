@@ -43,5 +43,49 @@ int main(){
 
     // if you are creating an array with N -> rows it should alway index between (0- n-1) and if M -> cols it should index between (0-m-1)
 
-    // accessing the elements : 
+    // accessing the elements from an array we can do it in 2 ways row wise and column wise :
+    
+    // Accessing elements row wise 
+    cout<<"printing Row wise ! "<<endl;
+    for(int i =0;i<3;i++){
+        // so for outer loop we use to represent rows which are 3 and for each row we need to print all values of columns so for that we use inner loop
+        for(int j =0;j<3;j++){
+            cout<<array[i][j]<<" ";
+        }
+        cout<<endl;
+    }
+    
+    // Accessing elements column wise : we need a little change we need to first print column(j) then we need to print rows(i)
+    cout<<"Printing Column wise ! "<<endl;
+    for(int i =0;i<3;i++){
+        for(int j =0;j<3;j++){
+            cout<<array[j][i]<<" ";
+        }
+        cout<<endl;
+    }
+
+// Taking Dynamic input from user 
+int array1[3][4];
+int rows =3;
+int cols =3;
+
+cout<<"Enter the values of row and cols : "<<endl;
+for(int i =0;i<rows;i++){
+    for(int j=0;j<cols;j++){
+        cin>>array1[i][j];
+    }
+}
+
+cout<<"printing the vaues Row wise : "<<endl;
+// Now print the array values : 
+for(int i =0;i<rows;i++){
+    for(int j=0;j<cols;j++){
+        cout<<array1[i][j]<<" ";
+    }
+    cout<<endl;
+}
+
+
+
+
 }
