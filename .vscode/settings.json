@@ -4,7 +4,9 @@
         "iostream": "cpp",
         "string": "cpp",
         "limits": "cpp",
-        "vector": "cpp"
+        "vector": "cpp",
+        "utility": "cpp",
+        "xutility": "cpp"
     },
     "cSpell.words": [
         "bandh",
