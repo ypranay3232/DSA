@@ -38,7 +38,7 @@ int main()
 
     // now print the key 
     int ip;
-    cout<<"Enter The to search : "<<endl;
+    cout<<"Enter the Key to search : "<<endl;
     cin>>ip;
     cout<<findkey(array,3,3,ip);
 }

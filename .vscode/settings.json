@@ -6,7 +6,9 @@
         "limits": "cpp",
         "vector": "cpp",
         "utility": "cpp",
-        "xutility": "cpp"
+        "xutility": "cpp",
+        "initializer_list": "cpp",
+        "algorithm": "cpp"
     },
     "cSpell.words": [
         "bandh",

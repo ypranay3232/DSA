@@ -1,4 +1,4 @@
-/* To print the sum of all rows we do it as : we create an initialize a sum variable in a function and we loop it in cols inner loop */
+/* To print the sum of all rows we do it as : we create and initialize a sum variable in a function and we loop it in cols inner loop */
 
 #include <iostream>
 

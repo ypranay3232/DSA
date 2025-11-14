@@ -9,7 +9,7 @@ We use two pointer approach : first we create two pointers : start and end
 and assign 'start' at starting of index and with value (0)
 and assign 'End' with ending of index and with value (1)
 
-and we take another variable 'i' and we assign it to start and we increment (i) and start and now we add a condition (if arr[i] ==0 ){ then swap(arr[i], with arr[start]) }
+now we add a condition while true (mid<=end.. yes always true til mid==end) (if arr[i] ==0 ){ then swap(arr[i], with arr[start]) }
 so we get 0's at start
 and if(arr[i] == 1){ then swap(arr[i], with arr[end]) } and we decrenent end so we get 1 at end
 
@@ -24,10 +24,8 @@ using namespace std;
 int main()
 {
     vector<int> array = {0, 1, 1, 0, 1, 0, 1, 0, 0};
-    int n = array.size();
-
     int start = 0;
-    int end = n-1; // so we can start with ending
+    int end = array.size()-1; // so we get the ending of array
     int mid = 0;//The mid vatiable is like a traversing pointer which traverse and check each number with start and end
 
     // now check if mid <= end which is alway true because 0< n-1 == True 
@@ -40,7 +38,7 @@ int main()
         }
         else if(array[mid]==1){
             // if mid value ==1 swap with end and decrement end value so we can get next values
-            swap(array[mid],array[end]);
+            swap(array[end],array[mid]);
             end --;
         }
     }
