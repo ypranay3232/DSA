@@ -8,7 +8,9 @@
         "utility": "cpp",
         "xutility": "cpp",
         "initializer_list": "cpp",
-        "algorithm": "cpp"
+        "algorithm": "cpp",
+        "xhash": "cpp",
+        "unordered_set": "cpp"
     },
     "cSpell.words": [
         "bandh",

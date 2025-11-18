@@ -21,14 +21,14 @@ else : last condition is (k++) because c[k] is low
 */
 #include <iostream>
 #include <vector>
-#include <set>
+// #include <set>
 
 using namespace std;
 
 vector<int> common_ele(int A[], int B[], int C[], int n1, int n2, int n3)
 {
     vector<int> ans;
-    set<int> st;
+    // set<int> st;
     // now create 3 pointers and initialize with 0
     int i = 0, j = 0, k = 0;
     // now a while loop (i -->which points to A(n1),j--> which points to B(n2), k -->which points to C{n3} ))
@@ -38,8 +38,23 @@ vector<int> common_ele(int A[], int B[], int C[], int n1, int n2, int n3)
         if (A[i] == B[j] && B[j] == C[k])
         {
             // ans.push_back(A[i]); //we are counting duplicate values also so to avoid we use set
-            st.insert(A[i]);
-            i++, j++, k++;
+            // st.insert(A[i]);// The optimised sol without using Data structures (set)
+
+            // so we check a condition if ans is empty add numbers, if ans is not empty check the last number you added, if last added number is different then add this new number, if last number is same then dont add this number (avoids duplication )
+            if (ans.empty() || ans.back() != A[i])
+            {
+                // then push answer to A[i]
+                ans.push_back(A[i]);
+            }
+            // create a variable val, and check condition (while i< n1 yes and A[i] ==val) (.ie. keep moving i until A[i] is no longer equal to A[i] until array is finished)
+            int val = A[i];
+            // skip duplicates in each array
+            while (i < n1 && A[i] == val)
+                ++i;
+            while (j < n2 && B[j] == val)
+                ++j;
+            while (k < n3 && C[k] == val)
+                ++k;
         }
         // now if not equal to each other then we have to find the smallest number among
         else if (A[i] < B[j])
@@ -57,11 +72,11 @@ vector<int> common_ele(int A[], int B[], int C[], int n1, int n2, int n3)
             k++;
         }
     }
-    // now lets print the set !
-    for (int i : st)
-    {
-        ans.push_back(i);
-    }
+    // // now lets print the set !
+    // for (int i : st)
+    // {
+    //     ans.push_back(i);
+    // }
     return ans;
 }
 
@@ -71,7 +86,9 @@ int main()
     int B[] = {6, 7, 20, 80, 100};
     int C[] = {3, 4, 15, 20, 30, 70, 80, 120};
 
-    int n1 = 6, n2 = 5, n3 = 8;
+    int n1 = sizeof(A) / sizeof(A[0]);//to calculate the size of array instead of manually declaring n1 = 6 total bytes / single byte
+    int n2 = sizeof(B) / sizeof(B[0]);
+    int n3 = sizeof(C) / sizeof(C[0]);
 
     // now call the function.
     vector<int> Result = common_ele(A, B, C, n1, n2, n3);
