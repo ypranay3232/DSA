@@ -6,7 +6,7 @@ Target = 4
 first we check start =0,end=9, and mid = start +end /2 = 0+9/2 = 4.
 at idnex 4 we have value 4. so we found the traget but we dont print it we store it and check if we have any first occurences before this so we check left and do the same process.
 
-
+Time Complexity of Binary Search is : O(logn)
 */
 #include <iostream>
 #include <vector>
