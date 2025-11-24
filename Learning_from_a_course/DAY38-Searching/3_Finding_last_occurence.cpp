@@ -15,12 +15,13 @@ Anf for Last occurence we go to right and check  does the 7 contains any other 7
 */
 #include <iostream>
 #include <vector>
+#include <algorithm>
 using namespace std;
 
 int lastoccurence(const vector<int> &v, int target)
 {
     int start = 0;
-    int end = static_cast<int>(v.size()) - 1;
+    int end = v.size() - 1;
     int ans = -1;
     // Run the loop until start is less than end.
     while (start <= end)
@@ -47,20 +48,18 @@ int lastoccurence(const vector<int> &v, int target)
 int main()
 {
     vector<int> v = {2, 5, 7, 7, 7, 7, 9, 10};
-    cout << "Enter the target element to search from array " << endl;
-    int target;
-    if (!(cin >> target)) {               // read target once and validate
-        cout << "Invalid input.\n";
-        return 0;
-    }
+    int target = 7;
+
     int result = lastoccurence(v, target);
-    if (result == -1)
-    {
-        cout << "Target not found !" << endl;
-    }
-    else
-    {
-        cout << "target found at index : " << result << endl;
-    }
+    cout << "Last occurrence (custom binary search): " << result << endl;
+
+    // Actually there is no need to code a custom function to find the first and last occurence of  a element, we can use upper_bound and lower bound form algorithm library they take iterator type so we can use (auto). 
+
+    // The Upper_bound returns last occurence +1 so we have to use -1 to get last occurence, and on the other hand lower_bound returns first occurence.
+    auto ans2 = upper_bound(v.begin(), v.end(), target);
+    //
+    int lastindex = (ans2 - v.begin()-1);
+    cout << "The last occurence of an element by using std library function is : " << lastindex<< endl;
+
     return 0;
 }
