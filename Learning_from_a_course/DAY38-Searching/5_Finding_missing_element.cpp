@@ -54,7 +54,40 @@ int findmissingelement(vector<int> &arr)
 
 int main()
 {
-    vector<int> arr = {1, 2, 3,5,6, 7, 8};
+vector<int> arr;
+    int choice;
+
+    cout << "Press 0 for static input, 1 for dynamic input: ";
+    cin >> choice;// take user choice
+
+    if (choice == 0)
+    {
+        // Static input
+        arr = {1, 2, 3, 4, 6, 7, 8};// sample static array
+    }
+    else if (choice == 1)
+    {
+        // Dynamic input
+        int n;
+        cout << "Enter size of array: ";
+        cin >> n;
+
+        arr.resize(n);// allocate array
+
+        cout << "Enter " << n << " sorted elements: ";
+        for (int i = 0; i < n; i++)
+        {
+            cin >> arr[i];// taking input values from user
+        }
+    }
+    else
+    {
+        cout << "Invalid choice!";
+        return 0;
+    }
+
     cout << "Bruteforce: " << Bruteforce(arr) << '\n';
     cout << "BinarySearch: " << findmissingelement(arr) << '\n';
+
+    return 0;
 }
