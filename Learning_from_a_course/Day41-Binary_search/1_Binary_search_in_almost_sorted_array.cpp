@@ -15,10 +15,12 @@ int Binarysearchforalmostsortedarray(vector<int>arr, int target){
         if(arr[mid]==target){
             return mid;
         }
-        if(arr[mid+1] == target){
+        // can go out of bounds so make sure to handle this 
+        if(mid+1 < arr.size() && arr[mid+1] == target){
             return mid+1;
         }
-        if(arr[mid-1]==target){
+        // when target value is at starting index when we check at -1 we may get a negative number so : 
+        if(mid-1>=0 && arr[mid-1]==target){
             return mid-1;
         }
         // This above code is to find middle element now lets find the right and left element
@@ -40,5 +42,5 @@ int main(){
     int target = 40;//target is at index 2
 
     int ans = Binarysearchforalmostsortedarray(arr,target);
-    cout<<"index of "<<target<<"is "<<ans<<endl;
+    cout<<"index of "<<target<<" is "<<ans<<endl;
 }
