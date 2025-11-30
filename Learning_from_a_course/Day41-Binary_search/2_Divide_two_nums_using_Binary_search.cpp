@@ -31,13 +31,13 @@ using namespace std;
 int div_by_Two_nums(int divident, int divisior){
     int start = 0;
     int ans =0;//to store the values when we encounter nearest value to divident
-    int end = divident;
+    int end = abs(divident);
     int mid = start + (end-start)/2;
 
     while(start<=end){
-        if(mid*divisior == divident){
+        if(abs(mid*divisior) == abs(divident)){
             return mid;
-        }else if(mid*divisior > divident){
+        }else if(abs(mid*divisior) > abs(divident)){
             end = mid -1;
         }else{
             // here we store the answer and move right 
@@ -47,7 +47,13 @@ int div_by_Two_nums(int divident, int divisior){
         // now update the mid
         mid = start + (end-start)/2;
     }
-    return ans;
+    // Lets correct the program when we use negative number we dont print any answer so we use absolute () and make values only positive
+    if((divisior<0 && divident < 0)|| (divisior>0 && divident>0)){
+        return ans;
+    }else{
+        // if one is positive and one is negative then we print the negative sign 
+        return -ans;
+    }
 
 }
 
