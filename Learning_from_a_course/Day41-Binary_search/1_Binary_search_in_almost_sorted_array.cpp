@@ -1,6 +1,8 @@
 /*
 Binary search in a nearly sorted array : ex: {10,3,40,20,50,80,70}
 And any element (index) can be found in 3 positions (at ith index or i+1 index or i-1 index) if the array was sorted. But here we need to write 3 cases for if statement to check mid value if target == mid or target = mid-1 or target == mid+1. to cehck if element exist in any of the folowing (-1,0,1) of its index
+
+It's complexity is O(n)
 */
 
 #include<iostream>
