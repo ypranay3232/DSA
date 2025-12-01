@@ -36,7 +36,8 @@ int div_by_Two_nums(int divident, int divisior){
 
     while(start<=end){
         if(abs(mid*divisior) == abs(divident)){
-            return mid;
+            ans =  mid;
+            break;
         }else if(abs(mid*divisior) > abs(divident)){
             end = mid -1;
         }else{
