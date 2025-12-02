@@ -56,13 +56,15 @@ int findPairsBruteForce(vector<int> &nums, int k)
     int n = nums.size(); 
     set<pair<int, int>> uniquePairs; // To store unique (small, large) pairs
 
-    // Outer loop: pick the first element of the pair
+    // pick the first element of the pair
     for (int i = 0; i < n; i++)
     { // Iterate i from 0 to n-1
-        // Inner loop: pick the second element of the pair
+        // pick the second element of the pair
+      
+        // j starts from i+1 so i != j
         for (int j = i + 1; j < n; j++)
-        {                                      // j starts from i+1 so i != j
-            int diff = abs(nums[i] - nums[j]); 
+        {
+            int diff = abs(nums[i] - nums[j]); //makes both i,j non negative
 
             if (diff == k)
             {
