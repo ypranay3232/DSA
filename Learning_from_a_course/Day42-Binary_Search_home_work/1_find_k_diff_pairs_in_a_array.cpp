@@ -104,11 +104,62 @@ int findviaBinarysearch(vector<int>&nums, int k){
 
 }
 
+// Two-pointer solution: O(n log n) due to sorting
+int findPairsTwoPointers(vector<int>& nums, int k) {
+
+    // Step 1: sort the array 
+    sort(nums.begin(), nums.end());
+
+    int n = nums.size(); // Store array length
+    int i = 0; // Left pointer
+    int j = 1; // Right pointer (always ahead of i)
+    int count = 0; // To count unique k-diff pairs
+
+    // Step 2: move pointers until both are within array 
+    while (i < n && j < n) {  // Loop as long as i and j are valid
+        if (i == j) {   // Ensure i != j
+            j++;   // Move j forward if they are equal
+            continue;  // Skip to next iteration
+        }
+
+        long long diff = (long long)nums[j] - nums[i]; // Calculate difference
+
+        if (diff == k) {// Found a k-diff pair
+            count++;  // Increase count of unique pairs
+
+            int leftVal = nums[i];// Value at index i
+            int rightVal = nums[j]; // Value at index j
+
+            // Skip duplicates on the left side so we don't count same pair again
+            while (i < n && nums[i] == leftVal) {
+                i++; // Move i until nums[i] changes
+            }
+
+            // Skip duplicates on the right side
+            while (j < n && nums[j] == rightVal) {
+                j++;  // Move j until nums[j] changes
+            }
+        }
+        else if (diff < k) {  // Difference too small
+            j++;// Move right pointer to increase difference
+        }
+        else {// diff > k, difference too large
+            i++; // Move left pointer to reduce difference
+        }
+    }
+
+    return count; // Return total unique k-diff pairs
+}
+
+
+
 int main(){
     vector<int> nums = {3,1,4,1,5};
     int k = 2;
     int res = findPairsBruteForce(nums,k);
     int res1 = findviaBinarysearch(nums,k);
+    int res2 = findPairsTwoPointers(nums,k);
     cout<<"The ans is : "<<res<<endl;//returns 2 because we have only 2 possible pairs in the array (1,3) (3,5)
     cout<<"The ans is : "<<res1<<endl;//returns 2 because we have only 2 possible pairs in the array (1,3) (3,5)
+    cout<<"The ans is : "<<res2<<endl;//returns 2 because we have only 2 possible pairs in the array (1,3) (3,5)
 }
