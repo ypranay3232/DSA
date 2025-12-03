@@ -47,6 +47,7 @@ Constraints:
 #include <iostream>
 #include <vector>
 #include <set>
+#include<algorithm>
 using namespace std;
 
 
@@ -79,9 +80,35 @@ int findPairsBruteForce(vector<int> &nums, int k)
     return (int)uniquePairs.size(); // Convert size_t to int
 }
 
+int findviaBinarysearch(vector<int>&nums, int k){
+    // first sort the array 
+    sort(nums.begin(), nums.end());
+    int n = nums.size();
+    int count = 0;//counter to count k different pairs
+    
+    // loop the array and skip duplicates
+    for(int i =0;i<n;i++){
+        // if found duplicate skip it.
+        if(i>0 && nums[i] == nums[i-1]){
+            continue;
+        }
+        int target = nums[i]+k;
+
+        // now search the sub array.
+        bool found = binary_search(nums.begin()+i+1, nums.end(),target);
+        if(found){
+            count ++;
+        }
+    }
+    return count;
+
+}
+
 int main(){
-    vector<int> nums = {1,2,3,4,5};
-    int k = 1;
+    vector<int> nums = {3,1,4,1,5};
+    int k = 2;
     int res = findPairsBruteForce(nums,k);
-    cout<<"The ans is : "<<res<<endl;
+    int res1 = findviaBinarysearch(nums,k);
+    cout<<"The ans is : "<<res<<endl;//returns 2 because we have only 2 possible pairs in the array (1,3) (3,5)
+    cout<<"The ans is : "<<res1<<endl;//returns 2 because we have only 2 possible pairs in the array (1,3) (3,5)
 }
