@@ -89,50 +89,6 @@ vector<int> findclose_ele(vector<int> &arr, int k, int x)
     return result;
 }
 
-// 2) Using binary search
-vector<int> findClosest(vector<int> &arr, int k, int x)
-{
-
-    // Step 1: find where x would be inserted
-    int r = lower_bound(arr.begin(), arr.end(), x) - arr.begin();
-    int l = r - 1;
-
-    // Step 2: expand window to pick k closest numbers
-    while (k > 0)
-    {
-        // If left is out of range, we must pick from right
-        if (l < 0)
-        {
-            r++;
-        }
-        // If right is out of range, pick from left
-        else if (r >= arr.size())
-        {
-            l--;
-        }
-        // Both sides are valid → pick closest
-        else
-        {
-            int leftDiff = abs(arr[l] - x);
-            int rightDiff = abs(arr[r] - x);
-
-            // pick left if it is closer or ties
-            if (leftDiff <= rightDiff)
-            {
-                l--;
-            }
-            else
-            {
-                r++;
-            }
-        }
-        k--; // we selected one more element
-    }
-
-    // Step 3: the answer is the window (l+1 to r-1)
-    return vector<int>(arr.begin() + l + 1, arr.begin() + r);
-}
-
 int main()
 {
     vector<int> arr = {1, 2, 3, 4, 5};
@@ -148,13 +104,7 @@ int main()
     }
     cout<<endl;
 
-    vector<int> ans = findClosest(arr, k, x);
-    cout << "Closest elements are: ";
-    for (int v : ans)
-    {
-        cout << v << " ";
-    }
-    cout << endl;
+
 
     return 0;
 }
