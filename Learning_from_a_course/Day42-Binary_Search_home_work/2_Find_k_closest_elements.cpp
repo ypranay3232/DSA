@@ -52,13 +52,13 @@ and sort it : (1,2,3,4)
 
 */
 
-// 1) Brute force approach using sort()
 #include <iostream>
 #include <vector>
 #include <algorithm>
 
 using namespace std;
 
+// 1) Brute force approach using sort(). Time complexity O(n log n)
 vector<int> findclose_ele(vector<int> &arr, int k, int x)
 {
     // first create a pair list to store both values (difference and array value)
@@ -89,6 +89,50 @@ vector<int> findclose_ele(vector<int> &arr, int k, int x)
     return result;
 }
 
+// 2) two pointer approach : O(n)
+/* works as : contains a window (right - left) that covers array,
+s1 : start array with left =0, right = n-1,
+while window size > k
+compare (left or right) which is far from "X".... if left is far move left++, else move right --
+
+by doing so window size becomes "K".. the subarray left,right is our answer
+*/
+
+vector<int> TwoPointer_approach(vector<int>&arr, int k, int x){
+    // creating total size of elements and left and right pointer
+    int n = arr.size();
+    int left =0;
+    int right = n-1;
+
+    // now reduce the overall window size to k so..
+    //  ex: array is [1,2,3,4,5] so right = n-1 (4) and left = 0 so : 
+    // 4 - 0 + 1 = 5 >k (window size) But k = 4 so we need only 4 elements
+    while(right - left + 1 > k){
+
+        // our x = 3, k = 4
+        // now get diff arrays for each array index (left = 1 - 3 = 2) so left[0] = 2
+        int differenceleft = abs(arr[left] -x);
+        int differenceright = abs(arr[right] -x);
+
+
+        if(differenceleft > differenceright){
+            // if left diff values are greater than right : 2 > 2 nope !
+            left ++; 
+        }
+        else{
+            right --; //drop right side element
+        }
+    }
+
+    // now window size is exactly k, so return the sub array, by creating a var result and loop from left to right and push each index into result
+    vector<int> result;
+    for(int i = left; i<=right; i++){
+        result.push_back(arr[i]);
+    }
+    return result;
+
+}
+
 int main()
 {
     vector<int> arr = {1, 2, 3, 4, 5};
@@ -104,7 +148,10 @@ int main()
     }
     cout<<endl;
 
-
-
+    vector<int> twoptr = TwoPointer_approach(arr,k,x);
+    cout<<"The closest elements are : "<<endl;
+    for(int val : twoptr){
+        cout<<val<<" ";
+    }
     return 0;
 }
