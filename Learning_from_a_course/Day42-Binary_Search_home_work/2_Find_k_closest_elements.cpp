@@ -133,6 +133,35 @@ vector<int> TwoPointer_approach(vector<int>&arr, int k, int x){
 
 }
 
+// 3) Binary search approach : Optimal solution because O(log n + k)
+vector<int> Binartsearch(vector<int>&arr, int k, int x){
+    int left = 0;
+    int right = arr.size()-k;
+
+    while(left<right){
+        int mid = left + (right - left)/2;
+
+        // array = {1,2,3,4,5} and x = 3, k = 4 so : diffleft = 3-3 = 0
+        int diffleft = x-arr[mid];
+        int diffright = arr[mid+k]-x;//right is 3 + 4 - 3 = 4. we got window size
+
+        // now check if distance of left is > right then move it to right 
+        if(diffleft>diffright){
+            left = mid + 1;
+        }else{
+            // if no diffleft < right then assign right value to mid; (i.e mid = 4)
+            right = mid;
+        }
+    }
+    // since left holds the starting we take it and we iterate it from left to left + k (0+4)
+    vector<int> result;
+    for(int i = left;i<left+k;i++){
+        // now push back the iterated values (i.e array values to result)
+        result.push_back(arr[i]);
+    }
+    return result;
+}
+
 int main()
 {
     vector<int> arr = {1, 2, 3, 4, 5};
@@ -151,6 +180,13 @@ int main()
     vector<int> twoptr = TwoPointer_approach(arr,k,x);
     cout<<"The closest elements are : "<<endl;
     for(int val : twoptr){
+        cout<<val<<" ";
+    }
+    cout<<endl;
+
+    vector<int> bs = Binartsearch(arr,k,x);
+    cout<<"The closest elements are : "<<endl;
+    for(int val : bs){
         cout<<val<<" ";
     }
     return 0;
