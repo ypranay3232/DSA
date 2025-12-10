@@ -50,6 +50,22 @@ divide it by 2 and the ending element to be passed here is min(i,n-1), x to find
 
 Binarysearch(a,i/2,min(i,n-1),x)
 
+now lets see about "Unbounded search" : 
+
+The problem states : we have an infinite array (which is sorted and we have to find a x elementḍ)
+Because there is no end we cant use binary search,
+
+we use exponential search now (we take two pointers i,j and make a sub array and we check j<x)
+while(j<x){
+    i = j;
+    j = j * 2;
+
+    so each time we j moves to new index i also get along to previous j position.
+
+    so now we got it  as ex: (4,8 subarray indexes and we can say we can implement the binary search because we know the starting and ending)
+
+}
+
 */
 
 #include <iostream>
@@ -82,6 +98,23 @@ int bs(int a[], int start, int end, int x)
     // if we dent get the value we return -1
     return -1;
 }
+// Unbounded / Infinite array search problem 
+int unboundedSearch(int a[], int x)
+{
+    // Start with small window [0,1]
+    int i = 0;
+    int j = 1;
+
+    // Expand window until we pass x
+    while (a[j] < x)
+    {
+        i = j;          // Move start to previous end
+        j = j * 2;      // Double the window size
+    }
+
+    // Now x must be between a[i] and a[j]
+    return bs(a, i, j, x);
+}
 
 int exponenttialSearch(int a[], int n, int x)
 {
@@ -105,5 +138,11 @@ int main()
     int n = sizeof(a) / sizeof(int);
     int x = 13;
     int answer = exponenttialSearch(a,n,x);
-    cout << "The answer is : " << answer;
+    cout << "The answer of exponential search is : " << answer<<endl;
+    
+    // unbounded search 
+     int index = unboundedSearch(a, x);
+
+    cout << "unbounded search element found at index: " << index;
+
 }
