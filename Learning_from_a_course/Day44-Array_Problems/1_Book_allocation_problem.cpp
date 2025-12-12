@@ -1,70 +1,130 @@
 /*
 One of the most important Topic (book allocation problem)
+
+The problem is :
+Each book will be allocated to exactly one student, and each student will have exactly one book
+
+NOTE: The book allocation must be contiguous.
+
+given an array(array of books) : Contains no of pages so (a[i] shows the no of pages in the book)
+
+arr = [12,34,67,90]
+        0  1  2  3
+12,34,67,90 are pages of each book
+
+we have m students (2)
+SO, how many possible combinations can we do with 4 books and 2 students of
+
+(12) for student 1
+(34,67,90) for student 2
+
+or
+
+(12,34) for sequent 1
+(67,90) for student 2
+
+or
+
+(12,34,67) for student 1
+(90) for student 2
+
+NOTE: the condition is when we allocate books to student we have to allocate num of pages
+
+ex:
+approach 1 : student 1 (12)  pages so sum = 12
+and student 2 = (34,67,90) total no of pages(sum) = (191)
+
+approach 2 : student 1 (12,34) sum = 46
+ and student 2(67,90) total no of pages(sum) = (157)
+
+approach 3 : student 1 (12,34,67) sum = 113
+and student 2 (90) sum = 90
+
+so we have to take approach 3 because we have to take the minimum of average from all permutations
+
+
+ASSUME : if no of students > no of books, so return -1.
+
+The solution can be coded as :
+1) brute force
+2) Define a search Space
+start from 0 to 203 (total no of pages)
+
+so our all approaches mum is in between (the 0- 203) so we search in this search space
+Use binary search !
+
+
 */
 
-#include<iostream>
-#include<vector>      // defines LLONG_MAX
+#include <iostream>
+#include <numeric>
+#include<algorithm>
 #include<climits>
-using namespace std;     // simplify names (std::)
+using namespace std;
 
- // compute sum of pages from index l to r (inclusive)
-long long rangeSum(const vector<int>& pages, int l, int r) {
-    long long sum = 0;                       // accumulator for the sum
-    for (int i = l; i <= r; ++i) {           // iterate from l to r
-        sum += pages[i];                     // add each pages[i] to sum
+bool ispossiblesolution(const int a[], int books,int students,long long maxpagesalllowed){
+  long long pagesum = 0;
+  long long requiredstudents = 1;
+
+  for(int i =0;i<books;i++){
+    // if current book contains more pages than solution (mid) then the book cant be allocated
+    if(a[i]>maxpagesalllowed){
+        return false;
     }
-    return sum;                              // return the computed sum
-}
-
-// try all ways to split books[start..n-1] into 'studentsLeft' contiguous parts
-// returns the minimum possible maximum pages among the students for those books
-long long bruteForceRec(const vector<int>& pages, int start, int studentsLeft) {
-    int n = static_cast<int>(pages.size());  // number of books
-
-    if (studentsLeft == 1) {                 // base case: only one student left
-        return rangeSum(pages, start, n - 1); // that student takes all remaining books
-    }
-
-    long long best = LLONG_MAX;              // best (minimum) maximum found so far
-
-    // we must leave at least (studentsLeft -1) books for the remaining students
-    // therefore the splitEnd can go at most to n - studentsLeft
-    for (int splitEnd = start; splitEnd <= n - studentsLeft; ++splitEnd) {
-        long long currentSum = rangeSum(pages, start, splitEnd); // sum for current student
-        long long nextMax = bruteForceRec(pages, splitEnd + 1, studentsLeft - 1); // best for rest
-        long long allocationMax = max(currentSum, nextMax);      // maximum load for this allocation
-
-        if (allocationMax < best) {        // if this allocation improves the best
-            best = allocationMax;          // update best
+    // if pagesum + current book sum (dent allocate )
+    if(pagesum + a[i]>maxpagesalllowed){
+        ++requiredstudents;
+        pagesum = a[i];
+        // if allocations is done more than books 
+        if(requiredstudents>students){
+            return false;
         }
     }
-
-    return best;                            // return best found for this subproblem
+    else{
+        pagesum += a[i];
+    }
+  }  
+  return true;
 }
 
-// public API: returns minimum possible maximum pages when dividing pages among m students
-// returns -1 if impossible (more students than books)
-long long bookAllocationBruteForce(const vector<int>& pages, int m) {
-    int n = static_cast<int>(pages.size()); // number of books
-    if (m > n) return -1;                   // impossible: not enough books
-    return bruteForceRec(pages, 0, m);      // start recursion from index 0 with m students
-}
 
-int main() {
-    ios::sync_with_stdio(false);            // fast IO: untie C and C++ IO
-    cin.tie(nullptr);                       // fast IO: untie cin from cout
-
-    // example input - change these values to test other cases
-    vector<int> pages = {10, 20, 30, 40};   // pages in each book
-    int m = 2;                              // number of students
-
-    long long ans = bookAllocationBruteForce(pages, m); // compute answer
-
-    if (ans == -1) {                        // handle impossible case
-        cout << "Not possible (more students than books)\n"; // inform user
-    } else {
-        cout << "Minimum possible maximum pages = " << ans << '\n'; // print result
+long long findPages(int a[], int books, int students)
+{
+    if (students > books)
+    {
+        return -1;
     }
 
-    return 0;                               // exit program
+    // We use binary search
+    long long start = *max_element(a, a + books);
+    // To get sum for end : we use accumulate c++ template it takes starting arr, ending, initial
+    // array smart = 0, end = arr - books (because books are stored array )
+    long long end = accumulate(a, a + books, 0LL);//0LL to take results in long
+    long long ans = -1;
+
+    while(start<=end){
+        long long mid = start + (end - start)/2;
+        // check if current mid is possible solution 
+        if(ispossiblesolution(a,books,students,mid)){
+            // if yes store result 
+            ans = mid;
+            end = mid -1;
+        }
+        else{
+            // if its not the possible solution the we find result at right side
+            start = mid + 1;
+        }
+    }
+    return ans;
+}
+
+int main(){
+    int books = 4;
+    int students = 2;
+    int a[] = {12,34,67,90};
+
+    long long result = findPages(a,books,students);
+    cout<<"The Book allocation for each student is : "<<result<<endl;
+
+    return 0;
 }
