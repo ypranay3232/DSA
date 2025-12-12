@@ -60,6 +60,7 @@ Use binary search !
 #include <numeric>
 #include<algorithm>
 #include<climits>
+#include <vector>
 using namespace std;
 
 bool ispossiblesolution(const int a[], int books,int students,long long maxpagesalllowed){
@@ -118,13 +119,50 @@ long long findPages(int a[], int books, int students)
     return ans;
 }
 
+
+// brute force recursion: compute minimal possible maximum pages for allocating
+// books[i..n-1] among remainingStudents students
+long long bruteRec(const vector<int>& a, int i, int remainingStudents) {
+    // if we're at last student, they get all remaining books -> return their sum
+    if (remainingStudents == 1) {
+        long long s = 0;                              // accumulator for sum
+        for (int k = i; k < (int)a.size(); ++k) s += a[k]; // sum all remaining books
+        return s;                                     // that is the max for this partition
+    }
+
+    long long best = LLONG_MAX;                       // best (minimum) among options
+    long long currSum = 0;                            // running sum for current student
+
+    // place a cut after position j (i <= j < n - remainingStudents + 1)
+    // ensure there are enough books left for remainingStudents-1 students
+    for (int j = i; j <= (int)a.size() - remainingStudents; ++j) {
+        currSum += a[j];                              // accumulate pages for current student
+        long long next = bruteRec(a, j + 1, remainingStudents - 1); // solve rest
+        long long candidate = max(currSum, next);    // maximum pages among students in this partition
+        best = min(best, candidate);                 // keep the best (minimum) max
+    }
+    return best;                                      // return minimal possible maximum
+}
+
+long long bruteForce(const vector<int>& a, int students) {
+    int n = a.size();                                 // number of books
+    if (students > n) return -1;                      // impossible
+    return bruteRec(a, 0, students);                  // start recursion
+}
+
+
+
 int main(){
     int books = 4;
     int students = 2;
     int a[] = {12,34,67,90};
+    vector<int> a1 = {12, 34, 67, 90};
 
     long long result = findPages(a,books,students);
     cout<<"The Book allocation for each student is : "<<result<<endl;
+
+   long long result1 = bruteForce(a1, students);
+    cout<<"The Book allocation for each student is : "<<result1<<endl;
 
     return 0;
 }
