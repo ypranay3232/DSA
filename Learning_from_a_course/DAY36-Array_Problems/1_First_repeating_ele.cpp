@@ -2,7 +2,7 @@
 A question from GFG :
 Given an array arr[], find the first repeating element. The element should occur more than once and the index of its first occurrence should be the smallest.
 
-(.i.e. return the first repeating element from an array so considering the below ex: we should return its index (1), because it repeat first. And from below ex: we can understand that the array indexing starts from 1, because the index of 5 is meantioned as 2. )
+(.i.e. return the first repeating element from an array so considering the below ex: we should return its index (1), because it repeat first. And from below ex: we can understand that the array indexing starts from 1, because the index of 5 is mentioned as 2. )
 
 Note:- The position you return should be according to 1-based indexing.
 
@@ -34,14 +34,14 @@ values and no of times they repeated
 4 ->1
 6 ->1
 
-first we traverse through the loop and store values in hashtable, then we iterate and check if current element has any future occurence ? if yes that value is first repeating element.
+first we traverse through the loop and store values in hashtable, then we iterate and check if current element has any future occurrence ? if yes that value is first repeating element.
 
 */
 #include <iostream>
 #include <vector>
 #include <unordered_map>
-#include<climits>
-#include<algorithm>
+#include <climits>
+#include <algorithm>
 using namespace std;
 
 int first_repeating_sol(const int arr[], int n)
@@ -52,10 +52,10 @@ int first_repeating_sol(const int arr[], int n)
         // another loop that runs from i + 1 so our array index will be i+1. so that we can check array elements with next index.
         for (int j = i + 1; j < n; ++j)
         {
-            // now check condition if a[i] == a[j] if yes make isrepeatd = true;
+            // now check condition if a[i] == a[j] if yes make isrepeated = true;
             if (arr[i] == arr[j])
             {
-                return i + 1; // because we need first occurence of a repeating element.
+                return i + 1; // because we need first occurrence of a repeating element.
             }
         }
     }
@@ -79,7 +79,7 @@ int first_repeating_ele(const int arr[], int n) // here the function header rece
         int v = arr[i];                // Int v is current value of i
         auto it = first_index.find(v); // auto it variable points to first_index value an checks if v is already repeated, if exist then (it) points to that if not then (it) equals to first_index
 
-        // now check conditon as if the array current value (v) is repeated or not
+        // now check condition as if the array current value (v) is repeated or not
         if (it == first_index.end())
         {
             // if not repeated then store it in map
@@ -91,7 +91,7 @@ int first_repeating_ele(const int arr[], int n) // here the function header rece
             best = min(best, it->second); // it ->second stores first index for v.
         }
     }
-    // if best is not updated, no repeats found retur -1.
+    // if best is not updated, no repeats found return -1.
     if (best == INT_MAX)
     {
         return -1;

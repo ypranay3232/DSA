@@ -45,7 +45,7 @@ int main()
     cout<<"=======================================";
 
     // Now let's see the optimized solution : 
-    // We don't want to check every possible element it takes a lot of time, so we want to know instantly whether a number exists in second array can form target sum with first array. so we use hashing because lookinup into a hash table is O(1)--> 
+    // We don't want to check every possible element it takes a lot of time, so we want to know instantly whether a number exists in second array can form target sum with first array. so we use hashing because lookingup into a hash table is O(1)--> 
 
     // first we load the array2 into the set 's' --> set ? because searching is very fast
 

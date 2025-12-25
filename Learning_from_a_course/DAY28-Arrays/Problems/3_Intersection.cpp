@@ -12,7 +12,7 @@ using namespace std;
 
 int main()
 {
-    // creating arays
+    // creating arrays
     vector<int> array1 = {1, 2, 3, 3, 4, 6, 8};
     vector<int> array2 = {3, 3, 4, 10};
 
@@ -27,7 +27,7 @@ int main()
             // now add the condition if : array1 current element == array2[current element]
             if (element == array2[j])
             {
-                // if yes then push that element to result. But we have an issue here if we have duplicate elements n, then we print the same elements again and again, and we just need to know what are the common elements between 2 arrays not the count of all elements., in this case we can use a flag to mark. so if we find the same element in array1 and array2 we mark that elemetn as -1, so we wont repeat it with other element
+                // if yes then push that element to result. But we have an issue here if we have duplicate elements n, then we print the same elements again and again, and we just need to know what are the common elements between 2 arrays not the count of all elements., in this case we can use a flag to mark. so if we find the same element in array1 and array2 we mark that element as -1, so we wont repeat it with other element
                 array2[j] = -1;
                 result.push_back(element);
             }
@@ -41,7 +41,7 @@ int main()
     }
     cout<<endl;
 
-    // We can use another appraoch which removes all duplicates and sort in order. yes we use sets and the complexity is : Time --> O(n log n) space --> O(n+m)
+    // We can use another approach which removes all duplicates and sort in order. yes we use sets and the complexity is : Time --> O(n log n) space --> O(n+m)
 
     // first we create 2 arrays which are unsorted and contains duplicate values, so we convert the vectors into sets because sets wont allow duplicates and sorts automatically
     vector<int> arr1 = {1, 2, 3, 3, 4, 6, 8};
