@@ -36,5 +36,19 @@ int main()
 
     // NOTE : we have three different addresses here 1) address of a. 2)address of ptr both are different but ptr holds the address of a, but their both address is not same
 
+    // size of pointer is system dependent for 32Bit ==> 4bit and for 64 bit ==> 8 bit etc
+
+    int a1 = 5;
+    int *p = &a1;
+
+    char ch = 'd';
+    char *q = &ch;
+
+    double dbl = 5.02312381294;
+    double *d = &dbl;
+    // the size of all pointers is same even though they all pointing to different datatypes became pointer only stores address irrespective of the datatype.
+    cout << "The size of p is : " << sizeof(p) << endl;
+    cout << "The size of p is : " << sizeof(q) << endl;
+    cout << "The size of p is : " << sizeof(d) << endl;
     return 0;
 }
