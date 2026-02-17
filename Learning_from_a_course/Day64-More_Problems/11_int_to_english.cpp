@@ -1,4 +1,4 @@
-// // Leetcode hard problem : 
+// // Leetcode hard problem :
 // #include <iostream>
 // #include <vector>
 // using namespace std;
@@ -87,66 +87,38 @@
 //     return 0;
 // }
 
-
-// Optimised code : 
+// Optimised code :
 #include <iostream>
 #include <vector>
 using namespace std;
 
-// words for numbers
+
+// First get the positions below 19
 vector<string> below20 = {
-    "", "One", "Two", "Three", "Four", "Five", "Six",
-    "Seven", "Eight", "Nine", "Ten", "Eleven", "Twelve",
-    "Thirteen", "Fourteen", "Fifteen", "Sixteen",
-    "Seventeen", "Eighteen", "Nineteen"
-};
+    "", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine",
+    "Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen",
+    "Seventeen", "Eighteen", "Nineteen"};
 
+    // Then get twenty, thirty ... til 90,
 vector<string> tens = {
-    "", "", "Twenty", "Thirty", "Forty",
-    "Fifty", "Sixty", "Seventy", "Eighty", "Ninety"
-};
+    "", "", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety"};
+// then add thousands and millions and billion
+vector<string> thousands = {"", "Thousand", "Million", "Billion"};
 
-vector<string> thousands = {
-    "", "Thousand", "Million", "Billion"
-};
-
-// recursive helper
+// helper function to check if number == 0, return none if < 20 return index of below20[num] ex: 18 points to index 18 value.
 string helper(int num)
 {
-    string result = "";
-
-    // case 1: less than 20
-    if (num < 20)
-    {
-        result = below20[num];
-    }
-
-    // case 2: less than 100
+    if (num == 0)
+        return "";
+    else if (num < 20)
+        return below20[num];
     else if (num < 100)
-    {
-        result = tens[num / 10];
-
-        if (num % 10)
-        {
-            result += " " + helper(num % 10);
-        }
-    }
-
-    // case 3: less than 1000
-    else if (num < 1000)
-    {
-        result = below20[num / 100] + " Hundred";
-
-        if (num % 100)
-        {
-            result += " " + helper(num % 100);
-        }
-    }
-
-    return result;
+        return tens[num / 10] + (num % 10 ? " " + helper(num % 10) : "");
+    else
+        return below20[num / 100] + " Hundred" + (num % 100 ? " " + helper(num % 100) : "");
 }
 
-string numberToWordsOptimized(int num)
+string numberToWords(int num)
 {
     if (num == 0)
         return "Zero";
@@ -156,22 +128,15 @@ string numberToWordsOptimized(int num)
 
     while (num > 0)
     {
-        // get last 3 digits
-        int chunk = num % 1000;
-
-        if (chunk != 0)
+        if (num % 1000 != 0)
         {
-            string chunkWord = helper(chunk);
-
-            if (thousands[i] != "")
-                chunkWord += " " + thousands[i];
-
-            if (!result.empty())
-                result = chunkWord + " " + result;
-            else
-                result = chunkWord;
+            string chunkResult = helper(num % 1000);
+            if (!thousands[i].empty())
+            {
+                chunkResult += " " + thousands[i];
+            }
+            result = chunkResult + (result.empty() ? "" : " ") + result;
         }
-
         num /= 1000;
         i++;
     }
@@ -182,5 +147,5 @@ string numberToWordsOptimized(int num)
 int main()
 {
     int num = 1234567891;
-    cout << numberToWordsOptimized(num);
+    cout << numberToWords(num);
 }
