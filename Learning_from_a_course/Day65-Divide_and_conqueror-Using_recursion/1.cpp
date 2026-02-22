@@ -35,64 +35,66 @@ void Merge(int *arr, int start, int end)
 {
     int mid = start + (end - start) / 2;
     // NOTE : we dont have two separate arrays, its  just a single array and we call the left part start part and right part of array end.
-    
-    // now we create a new array for left part : because its a single array so we do it as :         mid - start + 1 (mid to start+1 (til index -)) is a sub array
 
-    // and : end to mid is another sub array. and we copy the values into it
+    // now we create a new array for left part : because its a single array so we do it as :        mid - start + 1 (mid to start+1 (til index -)) is a sub array
 
-    // left part : 
+    // end to mid is another sub array. and we copy the values into it
+
+    // left part :
     int len1 = mid - start + 1;
-    // right part : 
+    // right part :
     int len2 = end - mid;
 
-    // now create the arrays dynamically : 
-    int* left = new int[len1];
-    int* right = new int[len2];
+    // now create the arrays dynamically :
+    int *left = new int[len1];
+    int *right = new int[len2];
 
-    // now copy the values : 
+    // now copy the values :
     int k = start;
     // copy values for left
     for (int i = 0; i < len1; i++)
     {
-        left[i] = arr[k];//storing values in k
+        left[i] = arr[k]; // storing values in k
         k++;
     }
 
-    // for right values : 
+    // for right values :
     k = mid + 1;
-    for(int i = 0; i < len2; i++){
+    for (int i = 0; i < len2; i++)
+    {
         right[i] = arr[k];
         k++;
     }
 
-    // merge logic : 
-    int leftindex  = 0;
+    // merge logic :
+    int leftindex = 0;
     int rightindex = 0;
     int mainarrayindex = start;
     while (leftindex < len1 && rightindex < len2)
     {
         if (left[leftindex] < right[rightindex])
         {
-            // FIXED: changed rightindex to leftindex
-            arr[mainarrayindex++] = left[leftindex++]; 
-        }else{
-            // FIXED: removed the extra mainarrayindex++ that was skipping indices
+            arr[mainarrayindex++] = left[leftindex++];
+        }
+        else
+        {
             arr[mainarrayindex++] = right[rightindex++];
         }
     }
 
-    // if an array ends first : copy logic for left array  
-    while(leftindex < len1){
-        // FIXED: added leftindex++ to prevent infinite loop
+    // if an array ends first : copy logic for left array
+    while (leftindex < len1)
+    {
+
         arr[mainarrayindex++] = left[leftindex++];
     }
 
-    // for right array 
-    while(rightindex < len2){
-        // FIXED: added rightindex++ to prevent infinite loop
+    // for right array
+    while (rightindex < len2)
+    {
         arr[mainarrayindex++] = right[rightindex++];
     }
-    
+
     // Good practice: free the memory
     delete[] left;
     delete[] right;
@@ -127,8 +129,9 @@ int main()
 
     // now we create a function and we pass it array, start ,end
     Mergesort(arr, start, end);
-    // now print it : 
-    for(int i = 0; i < n; i++){
+    // now print it :
+    for (int i = 0; i < n; i++)
+    {
         cout << arr[i] << " ";
     }
     cout << endl;
