@@ -36,7 +36,7 @@ void Merge(int *arr, int start, int end)
     int mid = start + (end - start) / 2;
     // NOTE : we dont have two separate arrays, its  just a single array and we call the left part start part and right part of array end.
 
-    // now we create a new array for left part : because its a single array so we do it as :        mid - start + 1 (mid to start+1 (til index -)) is a sub array
+    // now we create a new array for left part : because its a single array.
 
     // end to mid is another sub array. and we copy the values into it
 
