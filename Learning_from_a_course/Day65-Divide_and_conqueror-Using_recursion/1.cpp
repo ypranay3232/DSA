@@ -123,7 +123,7 @@ void Mergesort(int *arr, int start, int end)
 int main()
 {
     int arr[] = {38, 27, 43, 3, 9, 20};
-    int n = 6; // FIXED: size of array is 6, not 5
+    int n = 6; 
     int start = 0;
     int end = n - 1;
 
