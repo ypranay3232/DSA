@@ -9,33 +9,65 @@
 
 // we follow this approach : abc we take a pointer (i) which represents a position and points to "a" and we use a loop to traverse thought abc.
 // case 1 : a gets swapped with itself (so : abc) and when i="B" j = "b" we get "abc" and when we have "i="b n j="c" we get "acb"  .now i = "a" j = "b" now both gets swapped (bac),do j++, so j ="c" and i ="a" so swap : "bca" now i ="a" j = "c" both gets swapped : (cba) now j++ so j = "a" i ="b" : "cab"
+
+// #include <iostream>
+// #include <string>
+// using namespace std;
+// void printpermutation(string &str, int i)
+// {
+//     // base case : when array goes out of index
+//     if (i >= str.length())
+//     {
+//         cout << str << " ";
+//         return;
+//     }
+//     // now swapping logic : j starts with i Current index
+//     for (int j = i; j < str.length(); j++)
+//     {
+//         // now swap i with j
+//         swap(str[i], str[j]);
+//         // now make the recursive call :
+//         printpermutation(str, i + 1);
+//         // till now programs works : but we get duplicate values so we add backtracking
+//         // backtracking logic : thats it
+//         swap(str[i], str[j]);
+//     }
+// }
+// int main()
+// {
+//     string str = "abc";
+//     int i = 0;
+//     printpermutation(str, i);
+//     return 0;
+// }
+
 #include <iostream>
 #include <string>
 using namespace std;
-void printpermutation(string &str, int i)
+void printpermutations(string &str, int i)
 {
-    // base case : when array goes out of index
-    if (i >= str.length())
-    {
-        cout << str << " ";
+    // here we pass the string as reference not a copy ! 
+    // base case : stopping condition ofc when i goes out of string or bounds 
+    if(i >=str.length()){
+        cout<<str<<" ";
         return;
     }
-    // now swapping logic : j starts with i Current index
-    for (int j = i; j < str.length(); j++)
-    {
-        // now swap i with j
-        swap(str[i], str[j]);
-        // now make the recursive call :
-        printpermutation(str, i + 1);
-        // till now programs works : but we get duplicate values so we add backtracking
-        // backtracking logic : thats it
-        swap(str[i], str[j]);
+
+    // now swap logic: start i and j with same index then loop over the str and increment j
+    for(int j =i;j<str.length();j++){
+        // now swap i and j
+        swap(str[i],str[j]);
+        // recursive logic : 
+        printpermutations(str,i+1);
+        // backtracking logic : 
+        swap(str[i],str[j]);
     }
 }
+
 int main()
 {
     string str = "abc";
     int i = 0;
-    printpermutation(str, i);
+    printpermutations(str, i);
     return 0;
 }
