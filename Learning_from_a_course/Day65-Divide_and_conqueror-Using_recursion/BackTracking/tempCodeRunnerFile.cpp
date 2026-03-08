@@ -1,4 +1,4 @@
-// #include <iostream>
+#include <iostream>
 // #include <vector>
 // using namespace std;
 
@@ -55,28 +55,3 @@
 
 //     return 0;
 // }
-
-
-#include<iostream>
-#include<vector>
-using namespace std;
-
-int maxsubarray(vector<int> &nums){
-    int maxsumtilnow = nums[0];
-    int currentmaxelement = nums[0];
-
-    // now loop the sum 
-    for(int i =1; i<nums.size();i++){
-        // update currentmaxelement and get max of nums[i] + currentmaxelement
-        currentmaxelement = max(nums[i],currentmaxelement + nums[i]);
-        // now compare both and get max
-        maxsumtilnow = max(maxsumtilnow,currentmaxelement);
-    }
-    return maxsumtilnow;
-}
-
-int main(){
-    vector<int> nums = {1,2,3,6,4,1,3,2,43,4,5,43,63};
-    cout<<"Max sub Array of sum : "<<maxsubarray(nums)<<endl;
-    return 0;
-}
