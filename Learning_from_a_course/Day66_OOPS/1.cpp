@@ -20,7 +20,7 @@ class demo
 
 class Animal
 {
-  // properties :
+  // Access specifiers : public, private, protected,default
 public:
   string name;
   string breed;
