@@ -3,6 +3,7 @@
 // A class is a user defined datatype thats acts as a blueprint for crating objects
 
 #include <iostream>
+#include <string> 
 using namespace std;
 
 // The by default class contains some value its not empty, Because when we create a class we assign it the minimum possible value so that we can identify it in memory.
@@ -18,12 +19,27 @@ class demo
   // greedy alignment : also know as memory packing which describes the compiler method for arranging data members(types) to minimize the total padding added.
 };
 
+
+
 class Animal
 {
   // Access specifiers : public, private, protected,default
+
+private:
+  string gender;
+
 public:
   string name;
   string breed;
+
+  // getter and setter to access private members must be inside the class
+  string getter() {
+    return gender;
+  }
+
+  void setter(string g) {
+    gender = g;
+  }
 
   void speak()
   {
@@ -53,6 +69,11 @@ int main()
   dynamicDog->breed = "Golden Retriever";
 
   cout << "Dynamic Animal Name: " << dynamicDog->name << endl;
+  // cout << "Accessing private members: " << dog.gender << endl;//this throws error when we try to access private members ...... so we use getters and setters
+
+  // first set the gender
+  dog.setter("male");
+  cout << "getting gender: " << dog.getter() << endl; 
 
   // Calling behaviors
   dynamicDog->speak();
