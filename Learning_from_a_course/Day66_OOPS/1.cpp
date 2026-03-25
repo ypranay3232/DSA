@@ -19,20 +19,46 @@ class demo
   // greedy alignment : also know as memory packing which describes the compiler method for arranging data members(types) to minimize the total padding added.
 };
 
-
-
 class Animal
 {
-  // Access specifiers : public, private, protected,default
-
 private:
   string gender;
 
 public:
   string name;
   string breed;
+  int weight;
 
-  // getter and setter to access private members must be inside the class
+  // 1. DEFAULT CONSTRUCTOR
+  // If you don't write this, the compiler creates a hidden one for you.
+  Animal() {
+    cout << "Default Constructor Called!" << endl;
+    name = "Unknown";
+  }
+
+  // 2. PARAMETERIZED CONSTRUCTOR
+  // Used to set values right at the moment of creation.
+  Animal(string name, string breed) {
+    cout << "Parameterized Constructor Called!" << endl;
+    this->name = name;
+    this->breed = breed;
+  }
+
+  // 3. COPY CONSTRUCTOR
+  // Pass by reference (&) is mandatory here to avoid infinite recursion.
+  Animal(Animal& temp) {
+    cout << "Copy Constructor Called!" << endl;
+    this->name = temp.name;
+    this->breed = temp.breed;
+    this->weight = temp.weight;
+  }
+
+  // 4. DESTRUCTOR
+  // Indicated by the tilde (~) sign. It takes no parameters.
+  ~Animal() {
+    cout << "Destructor Called for: " << name << endl;
+  }
+
   string getter() {
     return gender;
   }
@@ -50,26 +76,31 @@ public:
   {
     cout << "all day" << endl;
   }
-};
 
-// now after creating an class to access it we need to create an obj which access the class
+  void setweight(int weight){
+    this->weight = weight;
+  }
+};
 
 int main()
 {
-  // 1. Static Allocation (Stack)
-  Animal dog;
+  // --- STATIC ALLOCATION ---
+  cout << "--- Creating Static Dog ---" << endl;
+  Animal dog; // Calls Default Constructor
   dog.name = "Spikey";
 
-  // 2. Dynamic Allocation (Heap)
-  // 'ptr' is a pointer stored on the stack, pointing to an Animal on the heap
-  Animal *dynamicDog = new Animal();
+  // Using Parameterized Constructor
+  Animal bulldog("Butch", "Bulldog");
 
-  // Accessing properties via the arrow operator (->)
-  dynamicDog->name = "Snoop";
-  dynamicDog->breed = "Golden Retriever";
+  // Using Copy Constructor
+  Animal dogCopy(bulldog); // Copies Butch's data into dogCopy
+
+  // --- DYNAMIC ALLOCATION ---
+  cout << "\n--- Creating Dynamic Dog ---" << endl;
+  // 'ptr' is a pointer stored on the stack, pointing to an Animal on the heap
+  Animal *dynamicDog = new Animal("Snoop", "Golden Retriever"); 
 
   cout << "Dynamic Animal Name: " << dynamicDog->name << endl;
-  // cout << "Accessing private members: " << dog.gender << endl;//this throws error when we try to access private members ...... so we use getters and setters
 
   // first set the gender
   dog.setter("male");
@@ -78,9 +109,14 @@ int main()
   // Calling behaviors
   dynamicDog->speak();
 
-  // 3.Manual Cleanup
-  // Unlike 'dog', 'dynamicDog' will NOT be destroyed automatically.
+  // --- CLEANUP ---
+  cout << "\n--- Deleting Dynamic Dog ---" << endl;
+  // For dynamic memory, we MUST call delete to trigger the Destructor.
   delete dynamicDog;
 
+  cout << "\n--- End of Main (Static objects will be destroyed now) ---" << endl;
+  // Static objects (dog, bulldog, dogCopy) are destroyed automatically 
+  // in reverse order of creation when main() ends.
+  
   return 0;
 }
