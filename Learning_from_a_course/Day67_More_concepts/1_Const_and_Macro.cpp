@@ -3,6 +3,17 @@
 #include<iostream>
 using namespace std;
 
+// Macros ex : 
+#define PI 2.14159465
+
+// Macros in c++ are the preprocessor directives that allow you to define constants, functions etc generally defined as #define
+
+float areaofcircle(float r){
+    return PI * r * r;
+}
+float circleperimeter(float r){
+    return 2 * PI * r;
+}
 int main(){
     // const int a = 10;//here a is constant
     // // a = 15;//throws error
@@ -21,9 +32,10 @@ int main(){
     // *c = 10;//throws error because we initialized 2 with *c 
     cout<<*c<<endl;
 
-    // The catch here is we cant reassign the value but we can change the pointer 
-    
+    // The catch here is we cant reassign the value but we can change the pointer    
 
-
+    // Function call : 
+    cout<<areaofcircle(83.1)<<endl;
+    cout<<circleperimeter(43)<<endl;
     return 0;
 }
