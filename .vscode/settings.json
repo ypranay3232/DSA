@@ -80,5 +80,6 @@
         "saala",
         "wahi",
         "zhang"
-    ]
+    ],
+    "C_Cpp.errorSquiggles": "disabled"
 }
